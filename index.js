@@ -1,12 +1,12 @@
 const express = require('express');
-// Import Quote model and Op for database queries
+
 const { setupDatabase, Quote } = require('./database.js');
 const { Op } = require('sequelize');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Middleware to parse JSON bodies
+
 app.use(express.json());
 
 app.set('json spaces', 2);
@@ -185,5 +185,5 @@ async function startServer() {
     });
 }
 
-// Run the server
+
 startServer();
