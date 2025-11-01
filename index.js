@@ -8,18 +8,26 @@ const PORT = process.env.PORT || 3000;
 
 // Middleware to parse JSON bodies
 app.use(express.json());
-// This tells Express to add 2 spaces of indentation to all JSON responses
+
 app.set('json spaces', 2);
 
-// Simple root route
 app.get('/', (req, res) => {
-    res.send('Currency API is running!');
+    res.send(`
+        <div style="font-family: Arial, sans-serif; padding: 20px;">
+            <h1>Currency API is running!</h1>
+            <p>Welcome to the ARS Currency Exchange API. Here are the available endpoints:</p>
+            <ul>
+                <li><a href="/quotes">GET /quotes</a></li>
+                <li><a href="/average">GET /average</a></li>
+                <li><a href="/slippage">GET /slippage</a></li>
+            </ul>
+        </div>
+    `);
 });
 
 /**
- * Helper function to get the latest quotes from the DB.
- * It finds the most recent 'createdAt' timestamp and fetches all
- * quotes from that exact batch.
+ Helper function to get the latest quotes from the DB.
+ It finds the most recent 'createdAt' timestamp and fetches allquotes from that exact batch.
  */
 async function getLatestQuotes() {
     // Find the timestamp of the last successful job
@@ -44,11 +52,11 @@ async function getLatestQuotes() {
 }
 
 
-// --- API Endpoints ---
+// API Endpoints
 
 /**
  * 1.a GET /quotes
- * Returns an array of the most recent quotes.
+  Returns an array of the most recent quotes.
  */
 app.get('/quotes', async (req, res) => {
     try {
