@@ -4,7 +4,7 @@ This is a Node.js, Express, and Sequelize backend project built for an assignmen
 
 The API is designed to be fault-tolerant, meaning it will continue to serve data even if one or two of the external sources fail.
 
-Live URL:
+Live URL: https://currency-api-b0ra.onrender.com
 
 ---
 
